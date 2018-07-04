@@ -87,11 +87,14 @@ end
 
 def organize_schools hash
   new_hash = {}
-  array_v = []
+  array_v = hash.values.collect do |value|
+     binding.pry
+     value.values[0]
+   end
 
-  hash.values.each do |value|
-    array_v.push(value.values[0])
-  end
+  # hash.values.each do |value|
+  #   array_v.push(value.values[0])
+  # end
 
   array_v.uniq!.each do | v_u |
     new_hash[v_u] = hash.keys.select { |k| hash[k].values[0] == v_u }
